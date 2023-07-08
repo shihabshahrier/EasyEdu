@@ -33,7 +33,7 @@ class TEACHER(models.Model):
     teacher_phone = models.CharField(max_length=10)
     teacher_address = models.CharField(max_length=100)
     teacher_photo = models.ImageField(upload_to='teacher_photo/', blank=True)
-    deperment = models.CharField(max_length=100)
+    deperment = models.CharField(max_length=100, default='None')
     joinin_date = models.DateField()
 
     def __str__(self):
