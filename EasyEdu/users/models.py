@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+import datetime
 
 User = get_user_model()
 
@@ -41,13 +42,13 @@ class TEACHER(models.Model):
     
 class STUDENT(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    student_name = models.CharField(max_length=100)
-    student_email = models.EmailField(max_length=100)
-    student_phone = models.CharField(max_length=10)
-    student_address = models.CharField(max_length=100)
+    student_name = models.CharField(max_length=100, default='None')
+    student_email = models.EmailField(max_length=100, default='None')
+    student_phone = models.CharField(max_length=10, default='None')
+    student_address = models.CharField(max_length=100, default='None')
     student_photo = models.ImageField(upload_to='student_photo/', blank=True)
-    deperment = models.CharField(max_length=100)
-    joinin_date = models.DateField()
+    deperment = models.CharField(max_length=100, default='None')
+    joinin_date = models.DateField(default=datetime.date.today)
 
 
     def __str__(self):

@@ -1,0 +1,50 @@
+{% extends "orgAdmin/navbar.html" %}
+
+{% block content %}
+
+
+
+<div class="form-csv">
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input class="form-control" type="text" name="session" placeholder="Summer25">
+
+        <label class="form-label" for="customFile">upload csv file here</label>
+        <input type="file" name="file" class="form-control" id="customFile" />
+        <input type="submit" value="Upload" class="btn btn-primary">
+    </form>
+
+</div>
+
+
+<div>
+
+
+    <table class="table">
+        <thead>
+
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">email</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in students%}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{s.user}}</td>
+                <td>{{s.student_name}}</td>
+                <td>{{s.student_email}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+</div>
+
+{% endblock %}

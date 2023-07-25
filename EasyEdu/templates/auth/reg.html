@@ -71,6 +71,10 @@
 						<span class="label-input100">Confirm Password</span>
 					</div>
 
+					{% for message in messages %}
+					<p>{{ message }}</p>
+					{% endfor %}
+
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
 							Sign up

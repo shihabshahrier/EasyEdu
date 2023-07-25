@@ -21,7 +21,7 @@
       <h1><a href="/home" class="logo">EDE</a></h1>
       <ul class="list-unstyled components mb-5">
         <li class="active">
-          <a href=""><span class="fa fa-home"></span>Home</a>
+          <a href="/home"><span class="fa fa-home"></span>Home</a>
         </li>
         <li>
           <a href="#"><span class="fa fa-user-circle-o"></span>Profile</a>
@@ -33,7 +33,7 @@
           <a href="#"><span class="fa fa-users"></span>Faculty</a>
         </li>
         <li>
-          <a href="#"><span class="fa fa-graduation-cap"></span>Student</a>
+          <a href="{% url 'student' %}"><span class="fa fa-graduation-cap"></span>Student</a>
         </li>
         <li>
           <a href="{% url 'logout' %}"><span class="fa fa-sign-out"></span> Logout </a>
@@ -85,14 +85,20 @@
         </div>
       </nav>
 
+      {% block content %}
+
+      {% endblock content %}
 
     </div>
+
   </div>
 
   <script src="{% static 'home/js/jquery.min.js' %}"></script>
   <script src="{% static 'home/js/popper.js' %}"></script>
   <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
   <script src="{% static 'home/js/main.js' %}"></script>
+
+
 </body>
 
 </html>

@@ -31,6 +31,8 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
 	<!--===============================================================================================-->
+
+
 </head>
 
 <body>
@@ -49,6 +51,34 @@
 						<img src="{% static 'login/images/icons/logo.svg' %}" alt="logo" style="height: 35px;">
 					</span>
 
+
+					<div class="login-type">
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="user_type" id="exampleRadios1"
+								value="p1">
+							<label class="form-check-label" for="exampleRadios1">
+								Org Admin
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="user_type" id="exampleRadios2"
+								value="p2">
+							<label class="form-check-label" for="exampleRadios2">
+								Faculty
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="user_type" id="exampleRadios3" value="p3"
+								checked>
+							<label class="form-check-label" for="exampleRadios3">
+								student
+							</label>
+						</div>
+					</div>
+
+
+					<br>
+
 					<div class="wrap-input100 validate-input">
 						<input class="input100" type="text" name="username">
 						<span class="focus-input100" data-placeholder="username"></span>
@@ -61,6 +91,11 @@
 						<input class="input100" type="password" name="pass">
 						<span class="focus-input100" data-placeholder="Password"></span>
 					</div>
+
+					{% for message in messages%}
+					<p>{{ message }}</p>
+					{% endfor %}
+
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
@@ -81,6 +116,7 @@
 						</a>
 					</div>
 				</form>
+
 			</div>
 		</div>
 	</div>

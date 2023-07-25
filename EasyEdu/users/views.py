@@ -1,19 +1,37 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import ADMIN, ORG, TEACHER, STUDENT
+from orgAdmin.views import announcements
+from students.views import studentHome
 
 # Create your views here.
 def login(request):
     if request.method == 'POST':
+        user_type = request.POST['user_type']
         username = request.POST['username']
         password = request.POST['pass']
-        
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            auth.login(request, user)
-            return redirect('home')
+
+        print(user_type, username, password)
+
+        if user_type == 'p1':
+            user = authenticate(username=username, password=password)
+            if user is not None and ADMIN.objects.filter(user=user).exists():
+                auth.login(request, user)
+                return redirect('announcements')
+            else:
+                messages.info(request, 'Invalid Credentials')
+                return redirect('login')
+        elif user_type == 'p2':
+            pass
+        elif user_type == 'p3':
+            user = authenticate(username=username, password=password)
+            print(user)
+            if user is not None and STUDENT.objects.filter(user=user).exists():
+                auth.login(request, user)
+                return redirect(studentHome)
     return render(request, './auth/login.html')
     
 def register(request):
@@ -42,12 +60,7 @@ def register(request):
 
     return render(request, './auth/reg.html')
 
+
 def logout(request):
     auth.logout(request)
     return redirect('login')
-
-
-def home(request):
-    return render(request, './home/index.html')
-
-

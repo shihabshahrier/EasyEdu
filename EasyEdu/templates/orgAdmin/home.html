@@ -1,0 +1,72 @@
+{% extends "orgAdmin/navbar.html" %}
+
+{% block content %}
+
+<div class="announce">
+
+    <form id="myForm" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Title</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="title">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Post an Announcement </label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text"></textarea>
+        </div>
+        <button class="btn btn-info">Post</button>
+    </form>
+
+</div>
+
+
+<h3>Latest</h3>
+
+<div class="grid-container">
+    {% for a in announcements %}
+    <div class="grid-item">
+
+        <p>{{a.body}}</p>
+        <p>{{a.posted_by}}</p>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+<style>
+    .grid-container {
+        display: grid;
+        gap: 50px;
+        grid-template-columns: auto auto auto;
+        background-color: #ffffff;
+        padding: 10px;
+    }
+
+    .grid-item {
+        background-color: rgba(113, 255, 222, 0.8);
+        border: 1px solid rgba(131, 209, 255, 0.8);
+        padding: 20px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .announce {
+        padding: 20px;
+    }
+
+    .h3 {
+        padding: 20px;
+        text-align: center;
+    }
+</style>
+
+<script>
+    function clearForm() {
+        document.getElementById("myForm").reset();
+    }
+    clearForm();
+</script>
+
+{% endblock %}
