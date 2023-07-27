@@ -1,0 +1,5 @@
+faculty_id,first_name,last_name,email,password,joining_date,department
+203040,Alpha,head,alpha.head@gmail.com,12345,2023-07-22,CSE
+203041,Beta,tate,beta.tate@gmail.com,12345,2023-07-22,CSE
+203042,Sigma,Rogue,sigma.rogue@gmail.com,12345,2023-07-22,CSE
+203043,Ultra,Sid,ultra.sid@gmail.com,12345,2023-07-22,CSE

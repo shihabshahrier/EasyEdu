@@ -1,0 +1,184 @@
+{% extends "orgAdmin/navbar.html" %}
+
+{% block content %}
+
+
+{% for m in messages %}
+<script>
+    alert("{{m}}");
+</script>
+{% endfor %}
+
+<style>
+    .form-container {
+        display: flex;
+        gap: 40px;
+    }
+
+    .form-container .form-csv {
+        width: 50%;
+        /* Adjust the form width */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        /* Reduce the padding to save space */
+    }
+
+    /* Add margin between the input fields and the button */
+    .form-csv input,
+    .form-csv label {
+        margin-bottom: 10px;
+    }
+</style>
+
+<button id="showFormBtn" class="btn btn-outline-primary" style="margin: 10px;">Show/hide Form</button>
+
+<div class="forms">
+    <div class="form-separator form-container">
+        <div class="form-csv">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="form" value="f1">
+                <label for="session">Session:</label>
+                <input type="text" name="session" id="session" class="form-control" required>
+                <label class="form-label" for="customFile">Upload CSV file here</label>
+                <input type="file" name="file" class="form-control" id="customFile" />
+                <input type="submit" value="Upload" class="btn btn-outline-primary">
+            </form>
+        </div>
+
+        <div class="form-csv">
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="form" value="f2">
+                <label for="Faculty_id">Faculty ID:</label>
+                <input type="text" name="faculty_id" id="Faculty_id" class="form-control" required>
+
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" id="first_name" class="form-control" required>
+
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" id="last_name" class="form-control" required>
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" class="form-control" required>
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" class="form-control" required>
+
+                <label for="department">Department:</label>
+                <input type="text" name="department" id="department" class="form-control" required>
+
+                <label for="joining date">Session</label>
+                <input type="text" name="session" id="session" class="form-control" required>
+
+                <label for="joining date">Joining date</label>
+                <input type="date" name="joining_date" id="joining_date" class="form-control" required>
+
+                <input type="submit" value="Submit" class="btn btn-outline-primary">
+            </form>
+
+        </div>
+
+        <script>
+
+            // document.getElementById('showFormBtn').addEventListener('click', function () {
+            //     const formContainer = document.querySelector('.forms');
+            //     formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+
+            // });
+
+            //new
+
+            const formContainer = document.querySelector('.forms');
+            const showFormBtn = document.getElementById('showFormBtn');
+
+            showFormBtn.addEventListener('click', function () {
+                formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+                // Save the state in Local Storage
+                localStorage.setItem('formVisible', formContainer.style.display);
+            });
+
+            // Retrieve the previous state from Local Storage and set the form visibility
+            const previousState = localStorage.getItem('formVisible');
+            if (previousState) {
+                formContainer.style.display = previousState;
+            }
+
+            // JavaScript to format the date input value to YYYY-MM-DD format before form submission
+            const dateInput = document.getElementById('joining_date');
+            dateInput.addEventListener('change', function () {
+                const selectedDate = new Date(this.value);
+                const formattedDate = selectedDate.toISOString().split('T')[0];
+                this.value = formattedDate;
+            });
+        </script>
+
+
+
+    </div>
+</div>
+<!-- make it to the center -->
+<div class="search" style="margin-top: 20px;">
+    <form method="GET" style="display: flex; justify-content: center;">
+        <input type="text" name="query" placeholder="Search..." style="width: 50%; padding: 10px; border: 1px solid #ccc;">
+        <input type="submit" class="btn btn-info" value="Search">
+        {% if cancel %}
+        <a href="{% url 'faculty' %}" style="margin-left: 10px;" class="btn btn-outline-danger">Cancel</a>
+        {% endif %}
+    </form>
+</div>
+
+
+
+
+
+<div class="table" style="margin-top: 20px;">
+
+
+    <table class="table">
+        <thead>
+
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">email</th>
+                <th scope="col">department</th>
+                <th scope="col">joining date</th>
+                <th scope="col">action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for f in faculty%}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{f.user}}</td>
+                <td>{{f.faculty_name}}</td>
+                <td>{{f.faculty_email}}</td>
+                <td>{{f.department}}</td>
+                <td>{{f.joinin_date}}</td>
+                <td>
+                    <ul style="list-style: none;">
+                        <li><i class="fa fa-times"></i> </li>
+                        <li><i class="fa fa-edit"></i> </li>
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}

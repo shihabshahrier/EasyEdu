@@ -22,34 +22,40 @@ class ORG(models.Model):
     org_email = models.EmailField(max_length=100)
     org_phone = models.CharField(max_length=10)
     org_address = models.CharField(max_length=100)
+    customer_type = models.CharField(max_length=100)
     org_logo = models.ImageField(upload_to='org_logo/', blank=True)
+
 
     def __str__(self):
         return self.org_name
     
-class TEACHER(models.Model):
+class FACULTY(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    teacher_name = models.CharField(max_length=100)
-    teacher_email = models.EmailField(max_length=100)
-    teacher_phone = models.CharField(max_length=10)
-    teacher_address = models.CharField(max_length=100)
-    teacher_photo = models.ImageField(upload_to='teacher_photo/', blank=True)
-    deperment = models.CharField(max_length=100, default='None')
-    joinin_date = models.DateField()
+    org = models.ForeignKey(ORG, on_delete=models.CASCADE)
+    faculty_name = models.CharField(max_length=100)
+    faculty_email = models.EmailField(max_length=100)
+    faculty_phone = models.CharField(max_length=10)
+    faculty_address = models.CharField(max_length=100)
+    faculty_photo = models.ImageField(upload_to='faculty_photo/', blank=True)
+    department = models.CharField(max_length=100)
+    session = models.CharField(max_length=100, default='None')
+    joinin_date = models.DateField(default=datetime.date.today)
 
     def __str__(self):
-        return self.teacher_name
+        return self.faculty_name
     
 class STUDENT(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    org = models.ForeignKey(ORG, on_delete=models.CASCADE)
     student_name = models.CharField(max_length=100, default='None')
     student_email = models.EmailField(max_length=100, default='None')
     student_phone = models.CharField(max_length=10, default='None')
     student_address = models.CharField(max_length=100, default='None')
     student_photo = models.ImageField(upload_to='student_photo/', blank=True)
-    deperment = models.CharField(max_length=100, default='None')
+    department = models.CharField(max_length=100, default='None')
+    credit = models.IntegerField(default=0)
+    session = models.CharField(max_length=100, default='None')
     joinin_date = models.DateField(default=datetime.date.today)
-
 
     def __str__(self):
         return self.student_name

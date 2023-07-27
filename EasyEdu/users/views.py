@@ -3,9 +3,10 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import ADMIN, ORG, TEACHER, STUDENT
+from .models import ADMIN, ORG, STUDENT, FACULTY
 from orgAdmin.views import announcements
 from students.views import studentHome
+from faculty.views import facultyHome
 
 # Create your views here.
 def login(request):
@@ -18,14 +19,20 @@ def login(request):
 
         if user_type == 'p1':
             user = authenticate(username=username, password=password)
-            if user is not None and ADMIN.objects.filter(user=user).exists():
+            if user is not None and ORG.objects.filter(user=user).exists():
                 auth.login(request, user)
                 return redirect('announcements')
             else:
                 messages.info(request, 'Invalid Credentials')
                 return redirect('login')
         elif user_type == 'p2':
-            pass
+            user = authenticate(username=username, password=password)
+            if user is not None and FACULTY.objects.filter(user=user).exists():
+                auth.login(request, user)
+                return redirect(facultyHome)
+            else:
+                messages.info(request, 'Invalid Credentials')
+                return redirect('login')
         elif user_type == 'p3':
             user = authenticate(username=username, password=password)
             print(user)

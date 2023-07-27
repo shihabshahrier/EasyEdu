@@ -4,21 +4,128 @@
 
 
 
-<div class="form-csv">
+<style>
+    .form-container {
+        display: flex;
+        gap: 30px;
+    }
 
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input class="form-control" type="text" name="session" placeholder="Summer25">
+    .form-container .form-csv {
+        width: 50%;
+        height: 50%;
+        /* Adjust the form width */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        /* Reduce the padding to save space */
+    }
 
-        <label class="form-label" for="customFile">upload csv file here</label>
-        <input type="file" name="file" class="form-control" id="customFile" />
-        <input type="submit" value="Upload" class="btn btn-primary">
-    </form>
+    /* Add margin between the input fields and the button */
+    .form-csv input,
+    .form-csv label {
+        margin-bottom: 10px;
+    }
+</style>
+
+
+<button id="showFormBtn" class="btn btn-outline-primary" style="margin: 10px;">Show/hide Form</button>
+
+<div class="forms">
+    <div class="form-separator form-container">
+        <div class="form-csv">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="form" value="f1">
+                <input class="form-control" type="text" name="session" placeholder="Summer25">
+
+                <label class="form-label" for="customFile">Upload CSV file here</label>
+                <input type="file" name="file" class="form-control" id="customFile" />
+                <input type="submit" value="Upload" class="btn btn-outline-primary">
+            </form>
+        </div>
+
+        <div class="form-csv">
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="form" value="f2">
+                <label for="student_id">Student ID:</label>
+                <input type="text" name="student_id" id="student_id" class="form-control" required>
+
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" id="first_name" class="form-control" required>
+
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" id="last_name" class="form-control" required>
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" class="form-control" required>
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" class="form-control" required>
+
+                <label for="department">Department:</label>
+                <input type="text" name="department" id="department" class="form-control" required>
+
+                <label for="session">Session:</label>
+                <input type="text" name="session" id="session" class="form-control" required>
+
+                <input type="submit" value="Submit" class="btn btn-outline-primary">
+            </form>
+
+        </div>
+
+        {% for m in messages %}
+        <p>{{m}}</p>
+        {% endfor %}
+
+    </div>
 
 </div>
 
+<div class="search" style="margin-top: 20px;">
+    <form method="GET" style="display: flex; justify-content: center;">
+        <input type="text" name="query" placeholder="Search..."
+            style="width: 50%; padding: 10px; border: 1px solid #ccc;">
+        <input type="submit" class="btn btn-info" value="Search">
+        {% if cancel %}
+        <a href="{% url 'student' %}" style="margin-left: 10px;" class="btn btn-outline-danger">Cancel</a>
+        {% endif %}
+    </form>
+</div>
 
-<div>
+<script>
+
+
+    // document.getElementById('showFormBtn').addEventListener('click', function () {
+    //     const formContainer = document.querySelector('.forms');
+    //     formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+
+    // });
+
+
+    const formContainer = document.querySelector('.forms');
+    const showFormBtn = document.getElementById('showFormBtn');
+
+    showFormBtn.addEventListener('click', function () {
+        formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+        // Save the state in Local Storage
+        localStorage.setItem('formVisible', formContainer.style.display);
+    });
+
+    // Retrieve the previous state from Local Storage and set the form visibility
+    const previousState = localStorage.getItem('formVisible');
+    if (previousState) {
+        formContainer.style.display = previousState;
+    }
+
+</script>
+
+
+
+
+<div class="table" style="margin-top: 20px;">
 
 
     <table class="table">
@@ -29,7 +136,8 @@
                 <th scope="col">id</th>
                 <th scope="col">Name</th>
                 <th scope="col">email</th>
-                <th scope="col"></th>
+                <th scope="col">department</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -39,6 +147,13 @@
                 <td>{{s.user}}</td>
                 <td>{{s.student_name}}</td>
                 <td>{{s.student_email}}</td>
+                <td>{{s.department}}</td>
+                <td>
+                    <ul style="list-style: none;">
+                        <li><i class="fa fa-times"></i> </li>
+                        <li><i class="fa fa-edit"></i> </li>
+                    </ul>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
@@ -46,5 +161,11 @@
 
 
 </div>
+
+
+
+
+
+
 
 {% endblock %}

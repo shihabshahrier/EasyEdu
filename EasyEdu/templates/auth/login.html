@@ -31,7 +31,21 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
 	<!--===============================================================================================-->
+	<style>
+		/* Adjust the display property to make the form-check elements inline */
+		.login-type .form-check {
+			display: inline-block;
+			text-align: center;
 
+		}
+
+		/* Style the radio button (the disk) */
+		.login-type .form-check input[type="radio"] {
+			display: block;
+			font-size: 20px;
+			margin: 0 auto;
+		}
+	</style>
 
 </head>
 
@@ -71,7 +85,7 @@
 							<input class="form-check-input" type="radio" name="user_type" id="exampleRadios3" value="p3"
 								checked>
 							<label class="form-check-label" for="exampleRadios3">
-								student
+								Student
 							</label>
 						</div>
 					</div>
