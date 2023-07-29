@@ -1,110 +1,38 @@
+{% extends 'extend_part/navbar.html'%}
 {% load static %}
 
-<!doctype html>
-<html lang="en">
+{% block navbar_element %}
 
-<head>
-  <title>Home</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<li class="active">
+  <a href="/student-home"><span class="fa fa-home"></span>Home</a>
+</li>
+<li>
+  <a href="#"><span class="fa fa-user-circle-o"></span>Profile</a>
+</li>
+<li>
+  <a href="#"><span class="fa fa-cogs"></span>Advising</a>
+</li>
+<li>
+  <a href="#"><span class="fa fa-file"></span>Courses</a>
+</li>
+<li>
+  <a href="#"><span class="fa fa-archive"></span>Archived</a>
+</li>
+<li>
+  <a href="#"><span class="fa fa-credit-card-alt"></span>Payment</a>
+</li>
+<li>
+  <a href="#"><span class="fa fa-commenting-o"></span>Evaluation</a>
+</li>
+<li>
+  <a href="#"><span class="fa fa-certificate"></span>Grade Sheet</a>
+</li>
+<li>
+  <a href="{% url 'logout' %}"><span class="fa fa-sign-out"></span> Logout </a>
+</li>
 
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+{% endblock navbar_element%}
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
-</head>
+{% block content %}
 
-<body>
-
-  <div class="wrapper d-flex align-items-stretch">
-    <nav id="sidebar" class="active">
-      <h1><a href="/home" class="logo">EDE</a></h1>
-      <ul class="list-unstyled components mb-5">
-        <li class="active">
-          <a href="/student-home"><span class="fa fa-home"></span>Home</a>
-        </li>
-        <li>
-          <a href="#"><span class="fa fa-user-circle-o"></span>Profile</a>
-        </li>
-        <li>
-          <a href="#"><span class="fa fa-cogs"></span>Advising</a>
-        </li>
-        <li>
-          <a href="#"><span class="fa fa-file"></span>Courses</a>
-        </li>
-        <li>
-          <a href="#"><span class="fa fa-archive"></span>Archived</a>
-        </li>
-        <li>
-          <a href="#"><span class="fa fa-credit-card-alt"></span>Payment</a>
-        </li>
-        <li>
-          <a href="#"><span class="fa fa-commenting-o"></span>Evaluation</a>
-        </li>
-        <li>
-          <a href="{% url 'logout' %}"><span class="fa fa-sign-out"></span> Logout </a>
-        </li>
-      </ul>
-
-      <div class="footer">
-        <p>
-          Copyright &copy;
-          <script>document.write(new Date().getFullYear());</script> All rights reserved<i class="icon-heart"
-            aria-hidden="true"></i> by <a href="" target="_blank"></a>
-        </p>
-      </div>
-    </nav>
-
-    <!-- Page Content  -->
-    <div id="content" class="p-4 p-md-5">
-
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-
-          <button type="button" id="sidebarCollapse" class="btn btn-primary">
-            <i class="fa fa-bars"></i>
-            <span class="sr-only">Toggle Menu</span>
-          </button>
-          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <i class="fa fa-bars"></i>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Portfolio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
-              </li>
-            </ul> -->
-
-          </div>
-        </div>
-      </nav>
-
-      {% block content %}
-
-      {% endblock content %}
-
-    </div>
-
-  </div>
-
-  <script src="{% static 'home/js/jquery.min.js' %}"></script>
-  <script src="{% static 'home/js/popper.js' %}"></script>
-  <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'home/js/main.js' %}"></script>
-
-
-</body>
-
-</html>
+{% endblock %}

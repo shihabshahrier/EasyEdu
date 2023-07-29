@@ -1,0 +1,21 @@
+{% extends "orgAdmin/navbar.html" %}
+
+{% block content %}
+
+<div class="form-csv">
+    <h4>PreAdvising details</h4>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="form" value="f1">
+        <input class="form-control" type="text" name="session" placeholder="Summer25">
+
+        <label class="form-label" for="customFile">Upload CSV file here</label>
+        <input type="file" name="file" class="form-control" id="customFile" />
+        <input type="submit" value="Upload" class="btn btn-outline-primary">
+    </form>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+</div>
+
+{% endblock%}

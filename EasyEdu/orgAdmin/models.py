@@ -35,3 +35,21 @@ class RecruitedFaculty(models.Model):
 
     def __str__(self):
         return str(self.id) + " "+ self.session + " "+ str(self.date)
+    
+class PreAdvisingDetails(models.Model):
+    id = models.AutoField(primary_key=True, unique=True)
+    session = models.CharField(max_length=100)
+    pre_advising_file = models.FileField(upload_to='pre_advising_files/')
+    date = models.DateField(default=datetime.date.today)
+
+    def __str__(self):
+        return str(self.id) + " "+ self.session + " "+ str(self.date)
+    
+class AdvisingDetails(models.Model):
+    id = models.AutoField(primary_key=True, unique=True)
+    session = models.CharField(max_length=100)
+    advising_file = models.FileField(upload_to='advising_files/')
+    date = models.DateField(default=datetime.date.today)
+
+    def __str__(self):
+        return str(self.id) + " "+ self.session + " "+ str(self.date)

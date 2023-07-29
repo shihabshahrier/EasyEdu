@@ -1,15 +1,18 @@
 from django.shortcuts import render, redirect
-from .models import Announcement, EnrolledStudents, RecruitedFaculty
-from users.models import STUDENT, User, FACULTY
-from users.models import ORG
+from .models import Announcement, EnrolledStudents, RecruitedFaculty, PreAdvisingDetails, AdvisingDetails
+from users.models import STUDENT, User, FACULTY, ORG
+from advising.models import PreAdvising, Advising
 from django.contrib import messages
 import pandas as pd
 import os
 import datetime
+from datetime import datetime
+
 from django.db.models import Q
 
 
-# Create your views here.
+#==================== admin home ====================#
+
 def announcements(request):
     if request.method == 'POST':
         title = request.POST['title']
@@ -21,11 +24,17 @@ def announcements(request):
         announcement = Announcement.objects.create(posted_by=request.user, body=body, title=title, org=org)
         announcement.save()
         return redirect('announcements')
+    obj = ORG.objects.get(user=request.user)
     announcements = Announcement.objects.filter(org=ORG.objects.get(user=request.user))
-    return render(request, './orgAdmin/home.html', {'announcements': announcements})
 
+    return render(request, './orgAdmin/home.html', {'announcements': announcements, "obj":obj})
+
+
+
+#==================== admin student ====================#
 
 def student(request):
+    obj = ORG.objects.get(user=request.user)
     if request.method == 'POST':
         form_no = request.POST['form']
         if form_no == 'f1':
@@ -39,6 +48,7 @@ def student(request):
 
             # rename the file
             file.name = str(session)+".csv"
+
 
             enrolledStudents = EnrolledStudents.objects.create(session=session, student_info_file=file)
             enrolledStudents.save()
@@ -96,14 +106,17 @@ def student(request):
         if query:
             # search with user id   
             student = STUDENT.objects.filter(Q(student_name__icontains=query) | Q(student_email__icontains=query) | Q(department__icontains=query) | Q(session__icontains=query) | Q(user__username__icontains=query))
-            return render(request, './orgAdmin/student.html', {'students': student, 'cancel': True})
+            return render(request, './orgAdmin/student.html', {'students': student, 'cancel': True, "obj":obj})
 
                 
     student = STUDENT.objects.all()
-    return render(request, './orgAdmin/student.html', {'students': student})
+    return render(request, './orgAdmin/student.html', {'students': student, 'cancel': False, "obj":obj})
 
+
+#==================== admin Faculty ====================#
 # same as student
 def faculty(request):
+    obj = ORG.objects.get(user=request.user)
     if request.method == 'POST':
         form_no = request.POST['form']
         if form_no == 'f1':
@@ -178,7 +191,65 @@ def faculty(request):
         if query:
             # search with user id   
             faculty = FACULTY.objects.filter(Q(faculty_name__icontains=query) | Q(faculty_email__icontains=query) | Q(department__icontains=query) | Q(session__icontains=query) | Q(user__username__icontains=query))
-            return render(request, './orgAdmin/faculty.html', {'faculty': faculty, 'cancel': True})
+            return render(request, './orgAdmin/faculty.html', {'faculty': faculty, 'cancel': True, "obj":obj})
             
     faculty = FACULTY.objects.all()
-    return render(request, './orgAdmin/faculty.html', {'faculty': faculty, 'cancel': False})
+    return render(request, './orgAdmin/faculty.html', {'faculty': faculty, 'cancel': False, "obj":obj})
+
+
+
+#==================== admin profile ====================#
+
+def orgProfile(request):
+    obj = ORG.objects.get(user=request.user)
+    return render(request, './orgAdmin/profile.html', {"obj":obj})
+
+
+
+
+#==================== admin control panel ====================#
+
+def controlPanel(request):
+    if request.method == 'POST':
+        file = request.FILES['file']
+        session = request.POST['session']
+
+        print("#==================== Test Start ================#")
+        print(file)
+        print(session)
+        print("#==================== Test End ==================#")
+
+        # rename the file
+        file.name = str(session)+".csv"
+
+        preAdvisingDetails = PreAdvisingDetails.objects.create(session=session, pre_advising_file=file)
+        preAdvisingDetails.save()
+
+        # adding pre advising details to the database
+        df = pd.read_csv('media/pre_advising_files/'+str(file))
+
+        student = STUDENT.objects.all()
+        for s in student:
+            for index, row in df.iterrows():
+                l, h = map(int, row['Credit'].split('-'))
+                start_time , end_time = map(str, row['Time Slot'].split('-'))
+                s_time = datetime.strptime(start_time.strip(), '%I:%M%p').time()
+                e_time = datetime.strptime(end_time.strip(), '%I:%M%p').time()
+                ad_date = row['Date']
+                print("###################")
+                print(ad_date)
+                advising_date = datetime.strptime(ad_date, '%m-%d-%Y').date()
+                if l<=s.credit<=h:
+                    pre_advising = PreAdvising.objects.create(student=s, adving_day=advising_date, adving_start_time= s_time, adving_end_time=e_time, session=session)
+                    pre_advising.save()
+                    break
+        messages.info(request, 'Pre advising details added successfully')
+        # deleting the file after adding the students to the database
+        try:
+            os.remove('media/pre_advising_files/'+str(file))
+        except:
+            print("File not found")
+        return redirect('controlPanel')
+    
+
+    return render(request, './orgAdmin/controlPanel.html')
