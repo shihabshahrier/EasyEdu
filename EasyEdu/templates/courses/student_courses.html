@@ -1,0 +1,26 @@
+{% extends "student/navbar.html" %}
+
+
+{% block content %}
+
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Replace this with your course data loop -->
+        {% for s in sections %}
+        <div class="col-md-3 mb-4">
+            <div class="card" style="border-width: 1px; border-color: rgb(90, 151, 255);">
+                <div class="card-body text-center">
+                    <a href="/student-course-sec-map/{{s.section_id}}/">
+                        <h5 class="card-title">{{ s.section_id}}</h5>
+                    </a>
+                    <!-- <p class="card-text"></p> -->
+                    <!-- You can also include an image/logo here if available -->
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

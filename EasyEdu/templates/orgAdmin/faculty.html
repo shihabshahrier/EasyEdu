@@ -117,13 +117,14 @@
         </script>
 
 
-
     </div>
 </div>
-<!-- make it to the center -->
+
+
 <div class="search" style="margin-top: 20px;">
     <form method="GET" style="display: flex; justify-content: center;">
-        <input type="text" name="query" placeholder="Search..." style="width: 50%; padding: 10px; border: 1px solid #ccc;">
+        <input type="text" name="query" placeholder="Search..."
+            style="width: 50%; padding: 10px; border: 1px solid #ccc;">
         <input type="submit" class="btn btn-info" value="Search">
         {% if cancel %}
         <a href="{% url 'faculty' %}" style="margin-left: 10px;" class="btn btn-outline-danger">Cancel</a>
@@ -163,7 +164,7 @@
                 <td>{{f.joinin_date}}</td>
                 <td>
                     <ul style="list-style: none;">
-                        <li><i class="fa fa-times"></i> </li>
+                        <li><a href="/delete-faculty/{{f.user}}/"><i class="fa fa-times"></i></a></li>
                         <li><i class="fa fa-edit"></i> </li>
                     </ul>
                 </td>

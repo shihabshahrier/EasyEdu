@@ -1,0 +1,10 @@
+student_id,first_name,last_name,email,password,department
+20304060,abcd,a,abcd.a@gmail.com,12345,CSE
+20304061,bcde,b,bcde.b@gmail.com,12345,CSE
+20304062,cdef,c,cdef.c@gmail.com,12345,CSE
+20304063,defg,d,defg.d@gmail.com,12345,CSE
+20304064,efgh,e,efgh.e@gmail.com,12345,CSE
+20304065,fghi,f,fghi.f@gmail.com,12345,CSE
+20304066,ghij,g,ghij.g@gmail.com,12345,CSE
+20304067,hijk,h,hijk.h@gmail.com,12345,CSE
+20304068,ijkl,i,ijkl.i@gmail.com,12345,CSE

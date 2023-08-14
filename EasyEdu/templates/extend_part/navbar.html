@@ -83,24 +83,12 @@
             <i class="fa fa-bars"></i>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#"> <img src="{{objs}}" alt="Notifications"
-                    style="width: 30px; height: 30px;"></a>
-              </li>
-              <li class="nav-item" style="margin-right: 60px;">
-                <a class="nav-link" href="#">name</a>
-              </li>
+          {% block extra_nav %}
 
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="#"> <img src="{{obj.org_logo.url}}" alt="Notifications"
-                    style="width: 50px; height: 40px;"></a>
-              </li>
-            </ul>
 
-          </div>
+
+          {% endblock extra_nav %}
+
         </div>
       </nav>
 

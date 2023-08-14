@@ -1,21 +1,29 @@
 {% extends "orgAdmin/navbar.html" %}
 
+{% block extra_nav %}
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="nav navbar-nav ml-auto">
+        <!-- <li class="nav-item active">
+        <a class="nav-link" href="#"> <img src="{{objs}}" alt="Notifications"
+            style="width: 30px; height: 30px;"></a>
+      </li> -->
+        <li class="nav-item" style="margin-right: 60px;">
+            <a class="nav-link" href="/control-panel/admin-pre-advising/">advising</a>
+        </li>
+        <li class="nav-item" style="margin-right: 60px;">
+            <a class="nav-link" href="/control-panel/admin-courses/">courses</a>
+        </li>
+
+        </li>
+        <!-- <li class="nav-item active">
+        <a class="nav-link" href="#"> <img src="{{obj.org_logo.url}}" alt="Notifications"
+            style="width: 50px; height: 40px;"></a>
+      </li> -->
+    </ul>
+
+</div>
+{% endblock extra_nav %}
+
 {% block content %}
 
-<div class="form-csv">
-    <h4>PreAdvising details</h4>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="hidden" name="form" value="f1">
-        <input class="form-control" type="text" name="session" placeholder="Summer25">
-
-        <label class="form-label" for="customFile">Upload CSV file here</label>
-        <input type="file" name="file" class="form-control" id="customFile" />
-        <input type="submit" value="Upload" class="btn btn-outline-primary">
-    </form>
-    {% if message %}
-    <p>{{ message }}</p>
-    {% endif %}
-</div>
-
-{% endblock%}
+{% endblock content %}

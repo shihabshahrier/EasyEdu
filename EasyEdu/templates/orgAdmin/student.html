@@ -2,7 +2,11 @@
 
 {% block content %}
 
-
+{% comment %} {% for m in messages %}
+<script>
+    alert("{{m}}");
+</script>
+{% endfor %} {% endcomment %}
 
 <style>
     .form-container {
@@ -76,11 +80,12 @@
 
         </div>
 
-        {% for m in messages %}
-        <p>{{m}}</p>
-        {% endfor %}
+
 
     </div>
+    {% for m in messages %}
+    <p>{{m}}</p>
+    {% endfor %}
 
 </div>
 
@@ -150,7 +155,7 @@
                 <td>{{s.department}}</td>
                 <td>
                     <ul style="list-style: none;">
-                        <li><i class="fa fa-times"></i> </li>
+                        <li><a href="/delete-student/{{s.user}}/"><i class="fa fa-times"></i></a> </li>
                         <li><i class="fa fa-edit"></i> </li>
                     </ul>
                 </td>

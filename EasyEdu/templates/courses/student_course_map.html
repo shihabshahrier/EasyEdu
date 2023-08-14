@@ -1,0 +1,144 @@
+{% extends "student/navbar.html" %}
+
+{% block content %}
+
+<style>
+    .center-buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .form-container {
+        display: none;
+        margin-top: 20px;
+    }
+
+    /* Add this to your CSS */
+    .list-group-item {
+        border: none;
+        border-radius: 0;
+    }
+
+    .container {
+        margin-top: 20px;
+    }
+</style>
+
+
+<div class="form-container" id="quizForm">
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="form" value="f1">
+        <div class="mb-3">
+            <label for="quizInput" class="form-label">Quiz Input</label>
+            <input type="text" class="form-control" id="quizInput">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Quiz</button>
+    </form>
+</div>
+
+<div class="form-container" id="addWeekForm">
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="form" value="f2">
+        <div class="mb-3">
+            <label for="weekInput" class="form-label">Week No</label>
+            <input type="text" class="form-control" id="weekInput" name="week_no">
+        </div>
+        <div class="mb-3">
+            <label for="weekInput" class="form-label">Title</label>
+            <input type="text" class="form-control" id="weekInput" name="week_title">
+        </div>
+        <div class="mb-3">
+            <label for="videoInput" class="form-label">Video Link</label>
+            <input type="text" class="form-control" id="videoInput" name="video_link">
+        </div>
+        <div class="mb-3">
+            <label for="slidesInput" class="form-label">Slides Link</label>
+            <input type="text" class="form-control" id="slidesInput" name="slide_link">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Week</button>
+    </form>
+</div>
+
+<div class="container">
+    <h3 class="mb-4">Weekly Materials</h3>
+    <ul class="list-group">
+        {% for week in weeks %}
+        <li class="list-group-item"
+            style="border-width: 1px; border-style: solid; border-color: #7fb2ff; margin-top: 10px;">
+            <a href="weeklyMaterial/{{week.week}}">
+                <h5 class="mb-0">Week {{week.week_no}} - {{week.title}}</h5>
+            </a>
+            <!-- <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+        </li>
+        {% endfor %}
+        <!-- Add more week items here -->
+    </ul>
+</div>
+
+<script>
+    // document.addEventListener("DOMContentLoaded", function () {
+    //     const quizBtn = document.getElementById('quizBtn');
+    //     const addWeekBtn = document.getElementById('addWeekBtn');
+    //     const quizForm = document.getElementById('quizForm');
+    //     const addWeekForm = document.getElementById('addWeekForm');
+
+    //     quizBtn.addEventListener('click', () => {
+    //         quizForm.style.display = 'block';
+    //         addWeekForm.style.display = 'none';
+    //     });
+
+    //     addWeekBtn.addEventListener('click', () => {
+    //         addWeekForm.style.display = 'block';
+    //         quizForm.style.display = 'none';
+    //     });
+    // });
+
+    // const formContainer = document.querySelector('.forms');
+    // const showFormBtn = document.getElementById('showFormBtn');
+
+    // showFormBtn.addEventListener('click', function () {
+    //     formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+    //     // Save the state in Local Storage
+    //     localStorage.setItem('formVisible', formContainer.style.display);
+    // });
+
+    // // Retrieve the previous state from Local Storage and set the form visibility
+    // const previousState = localStorage.getItem('formVisible');
+    // if (previousState) {
+    //     formContainer.style.display = previousState;
+    // }
+
+    const quizBtn = document.getElementById('quizBtn');
+    const addWeekBtn = document.getElementById('addWeekBtn');
+    const quizForm = document.getElementById('quizForm');
+    const addWeekForm = document.getElementById('addWeekForm');
+
+    quizBtn.addEventListener('click', () => {
+        quizForm.style.display = quizForm.style.display === 'none' ? 'block' : 'none';
+        localStorage.setItem('quizVisible', quizForm.style.display);
+    });
+
+    addWeekBtn.addEventListener('click', () => {
+        addWeekForm.style.display = addWeekForm.style.display === 'none' ? 'block' : 'none';
+        localStorage.setItem('addWeekVisible', addWeekForm.style.display);
+    });
+
+    const previousQuizState = localStorage.getItem('quizVisible');
+    if (previousQuizState) {
+        quizForm.style.display = previousQuizState;
+    }
+
+    const previousAddWeekState = localStorage.getItem('addWeekVisible');
+    if (previousAddWeekState) {
+        addWeekForm.style.display = previousAddWeekState;
+    }
+
+
+
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "student/navbar.html" %}
+
+
+{% block content %}
+
+{% if ispre_advising %}
+
+<div class="container">
+  <form class="form-inline mt-3" method="get">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
+    <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</div>
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center"> <!-- Use justify-content-center class to horizontally center the forms -->
+    <div class="col-md-6">
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group border p-2">
+          <label for="selectInput">Available Course Sections</label>
+          <input type="hidden" name="form_no" value="f1">
+          <select class="form-control" id="selectInput" size="5" name="section_id">
+            <!-- <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+            <option value="option4">Option 4</option> -->
+            {% for sec in sections %}
+            <option value="{{sec.section_id}}">{{sec.section_id}} [{{sec.section_capacity}}]</option>
+            {% endfor %}
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group border p-2">
+          <input type="hidden" name="form_no" value="f2">
+          <label for="selectInput">Added Couses</label>
+          <select class="form-control" id="selectInput" size="5" name="section_id">
+            {% for a in advised%}
+            <option value="{{a}}">{{a.section_id}} [{{a.section_capacity}}]</option>
+            {% endfor %}
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+<h3>your pre-advising hasn't started yet </h3>
+
+{% endif %}
+<!-- Add Bootstrap JavaScript link (required for Bootstrap components) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- <script>
+  // Reload the page on refresh without resubmitting the form
+  if (performance.navigation.type === 1) {
+    location.reload(true);
+  }
+</script> -->
+<!-- remove everything  -->
+{% endblock %}

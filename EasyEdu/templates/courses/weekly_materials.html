@@ -1,0 +1,58 @@
+{% extends "faculty/navbar.html" %}
+
+
+{% block content %}
+
+<div class="container">
+    <h1 class="mb-4">Weeks Overview</h1>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <!-- <h5 class="mb-0">Week 1</h5> -->
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{wkm.videos_link}}"
+                    allowfullscreen></iframe>
+            </div>
+            <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </li>
+        <li class="list-group-item">
+            <!-- <h5 class="mb-0">Week 2</h5> -->
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="{{wkm.slides_link}}" allowfullscreen></iframe>
+            </div>
+            <p class="mt-2">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </li>
+        <!-- Add more week items here -->
+    </ul>
+</div>
+
+
+<div class="back-to-top">
+    <a href="#" class="btn btn-primary btn-lg">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        // Show or hide the back-to-top arrow
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('.back-to-top').fadeIn();
+            } else {
+                $('.back-to-top').fadeOut();
+            }
+        });
+
+        // Scroll back to top smoothly
+        $('.back-to-top a').click(function () {
+            $('html, body').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+    });
+</script>
+
+{% endblock %}
