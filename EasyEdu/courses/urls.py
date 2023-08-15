@@ -20,4 +20,5 @@ urlpatterns = [
         views.studentWeeklyMaterial,
         name="studentWeeklyMaterial",
     ),
+    path("archived-courses/", views.archiveCourses, name="archiveCourses"),
 ]

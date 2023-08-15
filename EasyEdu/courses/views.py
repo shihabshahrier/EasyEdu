@@ -9,6 +9,7 @@ from courses.models import (
     Quiz,
     FacultyCourseMapping,
 )
+from datetime import datetime
 
 
 # Create your views here.
@@ -20,12 +21,36 @@ def studentCourses(request):
         advising = StudentAdvising.objects.get(student=student)
         courses = advising.courses.all()
         sections = advising.section.all()
+        sections_ = []
+        print(sections)
+        for section in sections:
+            if section.section_end_time > datetime.now().time():
+                sections_.append(section)
 
-    return render(
-        request,
-        "courses/student_courses.html",
-        {"courses": courses, "sections": sections},
-    )
+        return render(
+            request,
+            "courses/student_courses.html",
+            {"courses": courses, "sections": sections_},
+        )
+
+
+def archiveCourses(request):
+    student = STUDENT.objects.get(user=request.user)
+    if student:
+        advising = StudentAdvising.objects.get(student=student)
+        courses = advising.courses.all()
+        sections = advising.section.all()
+        sections_ = []
+        for section in sections:
+            if section.section_end_time < datetime.now().time():
+                sections_.append(section)
+
+        return render(
+            request,
+            "courses/archived_course.html",
+            {"courses": courses, "sections": sections_},
+        )
+    # return render(request, "courses/archived_course.html")
 
 
 def facultyCourses(request):
