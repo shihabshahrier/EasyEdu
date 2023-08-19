@@ -2,3 +2,15 @@
 
 {% block content %}
 
+<div class="container mt-5">
+    <h4>Courses to Evaluate</h4>
+    <ul class="list-group">
+        {% for course in courses %}
+        <a href="{{course.section_id}}/">
+            <li class="list-group-item">{{course.section_id}}</li>
+        </a>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock content %}
