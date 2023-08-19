@@ -68,3 +68,13 @@ class CourseDetails(models.Model):
 
     def __str__(self):
         return str(self.id) + " " + self.session + " " + str(self.date)
+
+
+class Semester(models.Model):
+    id = models.AutoField(primary_key=True, unique=True)
+    session = models.CharField(max_length=100)
+    semester_start_date = models.DateField(default=datetime.date.today)
+    semester_end_date = models.DateField(default=datetime.date.today)
+
+    def __str__(self):
+        return str(self.id) + " " + self.session + " " + str(self.date)

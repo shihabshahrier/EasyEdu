@@ -1,0 +1,46 @@
+{% extends "student/navbar.html" %}
+
+{% block content %}
+
+<h3>Latest</h3>
+
+<div class="grid-container">
+    {% for a in announcements %}
+    <div class="grid-item">
+
+        <p>{{a.body}}</p>
+        <p>{{a.posted_by}}</p>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+<style>
+    .grid-container {
+        display: grid;
+        gap: 50px;
+        grid-template-columns: auto auto auto;
+        background-color: #ffffff;
+        padding: 10px;
+    }
+
+    .grid-item {
+        background-color: rgba(113, 255, 222, 0.8);
+        border: 1px solid rgba(131, 209, 255, 0.8);
+        padding: 20px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .announce {
+        padding: 20px;
+    }
+
+    .h3 {
+        padding: 20px;
+        text-align: center;
+    }
+</style>
+
+{% endblock %}
