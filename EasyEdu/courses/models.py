@@ -93,3 +93,15 @@ class FacultyCourseMapping(models.Model):
             + " - "
             + self.section.section_id
         )
+
+
+class Grade(models.Model):
+    grade_id = models.CharField(max_length=10, primary_key=True)
+    student = models.ForeignKey(STUDENT, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    section = models.ForeignKey(CourseSections, on_delete=models.CASCADE)
+    grade = models.CharField(max_length=10)
+    session = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.grade_id

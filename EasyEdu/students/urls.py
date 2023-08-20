@@ -9,4 +9,6 @@ urlpatterns = [
         "evaluation/<str:section_id>/", views.evaluateSection, name="evaluate-section"
     ),
     path("student-payment/", views.studentPayment, name="studentPayment"),
+    path("ypay/", views.ypay, name="ypay"),
+    path("grades/", views.grades, name="grades"),
 ]

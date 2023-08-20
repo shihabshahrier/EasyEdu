@@ -1,0 +1,25 @@
+{% extends "faculty/navbar.html" %}
+
+
+{% block content %}
+
+<div class="form-csv">
+    <h4>Submit Grade</h4>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label class="form-label" for="customFile">Upload CSV file here</label>
+        <input type="file" name="file" class="form-control" id="customFile" />
+        <input type="submit" value="Upload" class="btn btn-outline-primary">
+    </form>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+</div>
+
+<style>
+    input {
+        margin-top: 10px;
+    }
+</style>
+
+{% endblock%}

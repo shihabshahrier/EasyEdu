@@ -1,6 +1,12 @@
 {% extends "student/navbar.html"%}
-
+{% load static %}
 {% block content %}
+
+{% if payment %}
+
+<h4>Payment Successful</h4>
+
+{% else %}
 
 <div class="container mt-5">
     <h2>Semester Fee</h2>
@@ -14,18 +20,33 @@
             </tr>
         </thead>
         <tbody>
+            {% for course, fee in lst %}
+
             <tr>
-                <td>CSE</td>
-                <td>3</td>
-                <td>18500</td>
+                <td>{{course.course}}</td>
+                <td>{{course.course.course_credit}}</td>
+                <td>{{ fee }}</td>
             </tr>
+            {% endfor %}
             <tr>
                 <td colspan="2"><strong>Total</strong></td>
-                <td><strong>$35.00</strong></td>
+                <td><strong>{{total}}</strong></td>
             </tr>
         </tbody>
     </table>
-    <button class="btn btn-primary">Checkout</button>
+    <!-- <button class="btn btn-primary">Checkout</button> -->
+    <form action="/ypay/" method="POST">
+        {% csrf_token %}
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{pkey}}"
+            data-amount="{{total}}" data-name="EasyEdu" data-description="Semester Fee"
+            data-image="{% static 'login/images/icons/logo.svg' %}" data-locale="auto" data-currency="usd">
+            </script>
+    </form>
+    <!-- <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{pkey}}" data-amount="18500"
+        data-name="EasyEdu" data-description="Semester Fee" data-image="{% static 'login/images/icons/logo.svg' %}"
+        data-locale="auto" data-currency="usd">
+        </script> -->
 </div>
+{% endif %}
 
 {% endblock %}

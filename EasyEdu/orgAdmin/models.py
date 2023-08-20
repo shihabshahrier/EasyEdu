@@ -77,4 +77,15 @@ class Semester(models.Model):
     semester_end_date = models.DateField(default=datetime.date.today)
 
     def __str__(self):
-        return str(self.id) + " " + self.session + " " + str(self.date)
+        return str(self.id) + " " + self.session
+
+
+class otherInfo(models.Model):
+    id = models.AutoField(primary_key=True, unique=True)
+    session = models.CharField(max_length=100)
+    highest_credit = models.IntegerField()
+    lowest_credit = models.IntegerField()
+    price_per_credit = models.IntegerField()
+
+    def __str__(self):
+        return str(self.id) + " " + self.session

@@ -8,14 +8,14 @@ from orgAdmin.models import Semester
 
 # Create your models here.
 class Payment(models.Model):
-    student = models.ForeignKey(User, on_delete=models.CASCADE)
+    student = models.ForeignKey(STUDENT, on_delete=models.CASCADE)
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
     amount = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.student.username
+        return self.student.user.username
 
 
 class Evaluation(models.Model):

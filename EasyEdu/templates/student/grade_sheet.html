@@ -1,0 +1,21 @@
+{% extends "student/navbar.html"%}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <ul class="list-group">
+                <!-- Example data: replace this with your dynamic data -->
+                <li class="list-group-item active">{{semester.session}}</li>
+                {% for g in graded %}
+                <li class="list-group-item">{{g.section.course}} - {{g.grade}}</li>
+                {% endfor %}
+                <!-- End of example data -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends "faculty/navbar.html"%}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h4>Submit Grade</h4>
+    <ul class="list-group">
+        {% for sec in sections %}
+        <a href="{{sec.section_id}}/">
+            <li class="list-group-item">{{sec.section_id}}</li>
+        </a>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock content %}

@@ -312,14 +312,6 @@ def deleteFaculty(request, id):
     return redirect("faculty")
 
 
-# ==================== admin profile ====================#
-
-
-def orgProfile(request):
-    obj = ORG.objects.get(user=request.user)
-    return render(request, "./orgAdmin/profile.html", {"obj": obj})
-
-
 # ==================== admin control panel ====================#
 
 
@@ -472,3 +464,36 @@ def adminCourse(request):
                 print("File not found")
 
     return render(request, "./orgAdmin/courses.html")
+
+
+# ==================== admin profile ====================#
+
+
+def orgProfile(request):
+    obj = ORG.objects.get(user=request.user)
+    if request.method == "POST":
+        name = request.POST["name"]
+        email = request.POST["email"]
+        phone = request.POST["phone"]
+        address = request.POST["address"]
+        profile_pic = request.FILES["profile_pic"]
+
+        obj.user.name = name
+        obj.user.email = email
+        obj.user.phone = phone
+        obj.user.address = address
+
+        obj.user.save()
+
+        obj.org_name = name
+        obj.org_email = email
+        obj.org_phone = phone
+        obj.org_address = address
+        if profile_pic:
+            obj.org_logo = profile_pic
+
+        obj.save()
+
+        return redirect("orgProfile")
+
+    return render(request, "./orgAdmin/profile.html", {"user": obj})
