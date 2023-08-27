@@ -7,11 +7,13 @@ from courses.models import Course, CourseSections, Grade, WeeklyMaterials, Quiz
 from .models import Payment, Evaluation
 from datetime import datetime
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 # Create your views here.
+@login_required(login_url='login')
 def studentHome(request):
     student = STUDENT.objects.get(user=request.user)
     org = student.org
@@ -21,7 +23,7 @@ def studentHome(request):
         request, "./student/student_home.html", {"announcements": announcements}
     )
 
-
+@login_required(login_url='login')
 def studentProfile(request):
     student = STUDENT.objects.get(user=request.user)
     if request.method == "POST":
@@ -50,7 +52,7 @@ def studentProfile(request):
         return redirect("student-profile")
     return render(request, "./student/profile.html", {"user": student})
 
-
+@login_required(login_url='login')
 def evaluation(request):
     student = STUDENT.objects.get(user=request.user)
     student_advising = StudentAdvising.objects.get(student=student)
@@ -61,7 +63,7 @@ def evaluation(request):
 
     return render(request, "./student/evaluate.html", {"courses": courses})
 
-
+@login_required(login_url='login')
 def evaluateSection(request, section_id):
     student = STUDENT.objects.get(user=request.user)
     student_advising = StudentAdvising.objects.get(student=student)
@@ -87,7 +89,7 @@ def evaluateSection(request, section_id):
         return redirect("evaluation")
     return render(request, "./student/evaluation.html", {"section_id": section_id})
 
-
+@login_required(login_url='login')
 def studentPayment(request):
     student = STUDENT.objects.get(user=request.user)
     current_semester = Semester.objects.all().last()
@@ -118,7 +120,7 @@ def studentPayment(request):
     else:
         return render(request, "./student/payment.html", {"payment": True})
 
-
+@login_required(login_url='login')
 def ypay(request):
     student = STUDENT.objects.get(user=request.user)
     courses = StudentAdvising.objects.get(student=student).section.all()
@@ -142,7 +144,7 @@ def ypay(request):
 
         return render(request, "./student/ypay.html")
 
-
+@login_required(login_url='login')
 def grades(request):
     student = STUDENT.objects.get(user=request.user)
     student_advising = StudentAdvising.objects.get(student=student)

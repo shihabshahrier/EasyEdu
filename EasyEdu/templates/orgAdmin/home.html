@@ -23,12 +23,20 @@
 
 <h3>Latest</h3>
 
+<!-- announcement_id = models.AutoField(primary_key=True, unique=True)
+posted_by = models.ForeignKey(User, on_delete=models.CASCADE)
+org = models.ForeignKey(ORG, on_delete=models.CASCADE)
+title = models.CharField(max_length=100)
+body = models.TextField()
+date = models.DateField(default=datetime.date.today)
+time = models.TimeField(default=datetime.datetime.now().time()) -->
+
 <div class="grid-container">
     {% for a in announcements %}
     <div class="grid-item">
-
+        <h3>{{a.title}}</h3>
         <p>{{a.body}}</p>
-        <p>{{a.posted_by}}</p>
+        <p><span>{{a.date}}</span></p>
 
     </div>
     {% endfor %}
@@ -59,6 +67,17 @@
     .h3 {
         padding: 20px;
         text-align: center;
+    }
+
+    .grid-item span {
+        color: #888;
+        font-size: 0.7em;
+    }
+
+    /* You can add some hover effects if you want */
+    .grid-item:hover {
+        border-color: #ddd;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     }
 </style>
 

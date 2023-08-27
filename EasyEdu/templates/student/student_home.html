@@ -7,9 +7,9 @@
 <div class="grid-container">
     {% for a in announcements %}
     <div class="grid-item">
-
+        <h3>{{a.title}}</h3>
         <p>{{a.body}}</p>
-        <p>{{a.posted_by}}</p>
+        <p><span>{{a.date}}</span></p>
 
     </div>
     {% endfor %}
@@ -40,6 +40,17 @@
     .h3 {
         padding: 20px;
         text-align: center;
+    }
+
+    .grid-item span {
+        color: #888;
+        font-size: 0.7em;
+    }
+
+    /* You can add some hover effects if you want */
+    .grid-item:hover {
+        border-color: #ddd;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     }
 </style>
 

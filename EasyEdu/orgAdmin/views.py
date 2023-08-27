@@ -15,13 +15,14 @@ import pandas as pd
 import os
 import datetime
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
 from django.db.models import Q
 
 
 # ==================== admin home ====================#
 
-
+@login_required(login_url='login')
 def announcements(request):
     if request.method == "POST":
         title = request.POST["title"]
@@ -43,9 +44,9 @@ def announcements(request):
     )
 
 
-# ==================== admin student ====================#
+# ==================== admin student ==================== #
 
-
+@login_required(login_url='login')
 def student(request):
     obj = ORG.objects.get(user=request.user)
     if request.method == "POST":
@@ -53,11 +54,6 @@ def student(request):
         if form_no == "f1":
             file = request.FILES["file"]
             session = request.POST["session"]
-
-            print("#==================== Test Start ================#")
-            print(file)
-            print(session)
-            print("#==================== Test End ==================#")
 
             # rename the file
             file.name = str(session) + ".csv"
@@ -74,19 +70,11 @@ def student(request):
                 if User.objects.filter(username=row["student_id"]).exists():
                     continue
 
-                print(
-                    row["student_id"],
-                    row["first_name"],
-                    row["last_name"],
-                    row["email"],
-                    row["password"],
-                    row["department"],
-                )
                 user = User.objects.create(
                     username=row["student_id"], email=row["email"]
                 )
                 user.set_password(str(row["password"]))
-                print(row["password"])
+
                 user.save()
                 student = STUDENT.objects.create(
                     user=user,
@@ -290,7 +278,7 @@ def faculty(request):
 
 # ==================== delete Student ====================#
 
-
+@login_required(login_url='login')
 def deleteStudent(request, id):
     user = User.objects.get(username=id)
     student = STUDENT.objects.get(user=user)
@@ -368,6 +356,7 @@ def controlPanel(request):
     return render(request, "./orgAdmin/pre_advise.html")
 
 
+@login_required(login_url='login')
 def adminCourse(request):
     if request.method == "POST":
         session = request.POST["session"]
@@ -468,7 +457,7 @@ def adminCourse(request):
 
 # ==================== admin profile ====================#
 
-
+@login_required(login_url='login')
 def orgProfile(request):
     obj = ORG.objects.get(user=request.user)
     if request.method == "POST":

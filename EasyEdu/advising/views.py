@@ -4,10 +4,12 @@ from users.models import STUDENT, FACULTY, ORG
 from .models import PreAdvising, StudentAdvising
 from courses.models import Course, CourseSections
 import datetime
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 
+@login_required(login_url="login")
 def studentAdvising(request):
     user = User.objects.get(username=request.user.username)
     student = STUDENT.objects.get(user=user)

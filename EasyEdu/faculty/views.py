@@ -4,9 +4,12 @@ from orgAdmin.models import Announcement, Semester
 from courses.models import Course, CourseSections, Grade, WeeklyMaterials, Quiz
 import pandas as pd
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+
 
 
 # Create your views here.
+@login_required(login_url="login")
 def facultyHome(request):
     faculty = FACULTY.objects.get(user=request.user)
     announcements = Announcement.objects.filter(org=faculty.org)
@@ -14,7 +17,7 @@ def facultyHome(request):
         request, "./faculty/faculty_home.html", {"announcements": announcements}
     )
 
-
+@login_required(login_url="login")
 def facultyProfile(request):
     faculty = FACULTY.objects.get(user=request.user)
     if request.method == "POST":
@@ -42,13 +45,13 @@ def facultyProfile(request):
         return redirect("faculty-profile")
     return render(request, "./faculty/profile.html", {"user": faculty})
 
-
+@login_required(login_url="login")
 def submitGradeSection(request):
     faculty = FACULTY.objects.get(user=request.user)
     sections = CourseSections.objects.filter(faculty=faculty)
     return render(request, "./faculty/submit_grade_sec.html", {"sections": sections})
 
-
+@login_required(login_url="login")
 def submitGrade(request, section_id):
     faculty = FACULTY.objects.get(user=request.user)
     # sections = CourseSections.objects.filter(faculty=faculty)

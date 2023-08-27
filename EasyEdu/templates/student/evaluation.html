@@ -7,27 +7,8 @@
 
 <div class="container mt-5">
     <h4>Evaluate {{section_id}}</h4>
-    <form method = "POST">
+    <form method="POST">
         {% csrf_token %}
-        <!-- <div class="mb-3">
-            <label for="name" class="form-label">Course ID</label>
-            <input type="text" class="form-control" id="name" name="name" required>
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Faculty ID</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-        </div> -->
-        <!-- <div class="mb-3">
-            <label for="rating" class="form-label">Rating</label>
-            <select class="form-select" id="rating" name="rating" required>
-                <option value="" disabled selected>Select rating</option>
-                <option value="5">Excellent</option>
-                <option value="4">Very Good</option>
-                <option value="3">Good</option>
-                <option value="2">Fair</option>
-                <option value="1">Poor</option>
-            </select>
-        </div> -->
         <div class="rating-input">
             <input type="radio" id="star5" name="rating" value="5">
             <label for="star5">&#9733;</label>

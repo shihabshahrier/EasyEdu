@@ -10,11 +10,13 @@ from courses.models import (
     FacultyCourseMapping,
 )
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 
 
+@login_required(login_url="login")
 def studentCourses(request):
     student = STUDENT.objects.get(user=request.user)
     if student:
@@ -34,6 +36,7 @@ def studentCourses(request):
         )
 
 
+@login_required(login_url="login")
 def archiveCourses(request):
     student = STUDENT.objects.get(user=request.user)
     if student:
@@ -53,6 +56,7 @@ def archiveCourses(request):
     # return render(request, "courses/archived_course.html")
 
 
+@login_required(login_url="login")
 def facultyCourses(request):
     faculty = FACULTY.objects.get(user=request.user)
     if faculty:
@@ -65,6 +69,7 @@ def facultyCourses(request):
     )
 
 
+@login_required(login_url="login")
 def courseSecMap(request, section_id):
     section = CourseSections.objects.get(section_id=section_id)
     course = Course.objects.get(course_id=section.course.course_id)
@@ -106,6 +111,7 @@ def courseSecMap(request, section_id):
     )
 
 
+@login_required(login_url="login")
 def studentCourseSecMap(request, section_id):
     section = CourseSections.objects.get(section_id=section_id)
     course = Course.objects.get(course_id=section.course.course_id)
@@ -123,6 +129,7 @@ def studentCourseSecMap(request, section_id):
     )
 
 
+@login_required(login_url="login")
 def weeklyMaterial(request, section_id, week):
     section = CourseSections.objects.get(section_id=section_id)
     course = Course.objects.get(course_id=section.course.course_id)
@@ -132,6 +139,7 @@ def weeklyMaterial(request, section_id, week):
     return render(request, "courses/weekly_materials.html", {"wkm": wkm[0]})
 
 
+@login_required(login_url="login")
 def studentWeeklyMaterial(request, section_id, week):
     section = CourseSections.objects.get(section_id=section_id)
     course = Course.objects.get(course_id=section.course.course_id)
