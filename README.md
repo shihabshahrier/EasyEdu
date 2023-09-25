@@ -27,61 +27,60 @@ EasyEdu is an online platform designed to simplify university management, provid
 
 ## Images
 
-<!-- Slideshow Container -->
 <div id="image-slider" style="max-width: 500px; overflow: hidden;">
-  <img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.20.37%20PM.png
+  <img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.20.37%20PM.png
 " alt="Image 1">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.23.24%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.23.24%20PM.png
 " alt="Image 2">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.23.29%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.23.29%20PM.png
 " alt="Image 3">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.23.48%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.23.48%20PM.png
 " alt="Image 4">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.23.57%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.23.57%20PM.png
 " alt="Image 5">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.29.49%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.29.49%20PM.png
 " alt="Image 6">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.29.56%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.29.56%20PM.png
 " alt="Image 7">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.30.04%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.30.04%20PM.png
 " alt="Image 8">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.30.16%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.30.16%20PM.png
 " alt="Image 9">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.30.24%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.30.24%20PM.png
 " alt="Image 10">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.30.47%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.30.47%20PM.png
 " alt="Image 11">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.30.47%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.30.47%20PM.png
 " alt="Image 12">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.31.17%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.31.17%20PM.png
 " alt="Image 13">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.36.02%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.36.02%20PM.png
 " alt="Image 14">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.36.07%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.36.07%20PM.png
 " alt="Image 15">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.36.15%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.36.15%20PM.png
 " alt="Image 16">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.36.24%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.36.24%20PM.png
 " alt="Image 17">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.36.33%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.36.33%20PM.png
 " alt="Image 18">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.36.47%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.36.47%20PM.png
 " alt="Image 19">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.37.02%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.37.02%20PM.png
 " alt="Image 20">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.37.10%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.37.10%20PM.png
 " alt="Image 21">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.37.20%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.37.20%20PM.png
 " alt="Image 22">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.37.25%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.37.25%20PM.png
 " alt="Image 23">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.37.35%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-08-20%20at%2010.37.35%20PM.png
 " alt="Image 24">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-09-25%20at%204.05.53%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-09-25%20at%204.05.53%20PM.png
 " alt="Image 25">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-09-25%20at%204.06.12%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-09-25%20at%204.06.12%20PM.png
 " alt="Image 26">
-<img src="https://raw.githubusercontent.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-09-25%20at%204.06.31%20PM.png
+<img src="https://github.com/shihabshahrier/EasyEdu/blob/master/easyEdu_onsite_ss/Screenshot%202023-09-25%20at%204.06.31%20PM.png
 " alt="Image 27">
 
 </div>
@@ -100,8 +99,6 @@ EasyEdu is an online platform designed to simplify university management, provid
   // Start the slideshow
   setInterval(nextImage, 2000); // Change image every 2 seconds
 </script>
-
-
 
 
 ## Technologies Used
