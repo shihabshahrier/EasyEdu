@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop with Globe</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+    <script>
+        let scene, camera, renderer, globe;
+        const laptopWidth = 8;
+        const laptopHeight = 0.5;
+        const laptopDepth = 5;
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            // Laptop base
+            const baseGeometry = new THREE.BoxGeometry(laptopWidth, laptopHeight, laptopDepth);
+            const baseMaterial = new THREE.MeshBasicMaterial({ color: 0x333333 });
+            const laptopBase = new THREE.Mesh(baseGeometry, baseMaterial);
+            scene.add(laptopBase);
+
+            // Laptop screen
+            const screenGeometry = new THREE.BoxGeometry(laptopWidth, 0.1, laptopDepth - 1);
+            const screenMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
+            const laptopScreen = new THREE.Mesh(screenGeometry, screenMaterial);
+            laptopScreen.position.y = laptopHeight / 2 + 0.05;
+            scene.add(laptopScreen);
+
+            // Globe inside the screen
+            const globeGeometry = new THREE.SphereGeometry(1.5, 32, 32);
+            const globeMaterial = new THREE.MeshBasicMaterial({ color: 0x0000FF }); // Simple blue globe
+            globe = new THREE.Mesh(globeGeometry, globeMaterial);
+            globe.position.y = laptopHeight / 2 + 0.05;
+            scene.add(globe);
+
+            // Login key
+            const keyGeometry = new THREE.BoxGeometry(1, 0.1, 0.5);
+            const loginKeyMaterial = new THREE.MeshBasicMaterial({ color: 0xFFFFFF });
+            const loginKey = new THREE.Mesh(keyGeometry, loginKeyMaterial);
+            loginKey.position.set(-1, -laptopHeight / 2, 1);
+            scene.add(loginKey);
+
+            // Register key
+            const registerKeyMaterial = new THREE.MeshBasicMaterial({ color: 0xFFFFFF });
+            const registerKey = new THREE.Mesh(keyGeometry, registerKeyMaterial);
+            registerKey.position.set(1, -laptopHeight / 2, 1);
+            scene.add(registerKey);
+
+            // Adjusting camera position
+            camera.position.z = 15;
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            globe.rotation.y += 0.005; // Rotate the globe
+            renderer.render(scene, camera);
+        }
+
+        init();
+        animate();
+
+    </script>
+</body>
+
+</html>

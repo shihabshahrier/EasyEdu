@@ -74,3 +74,7 @@ def register(request):
 def logout(request):
     auth.logout(request)
     return redirect("login")
+
+
+def eduHome(request):
+    return render(request, "edu_home.html")
